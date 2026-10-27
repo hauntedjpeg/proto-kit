@@ -6,7 +6,7 @@
 // Read-only. Exit 0 always.
 
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
-import { join, relative, extname, basename } from "node:path";
+import { join, relative, extname } from "node:path";
 
 const root = process.argv[2] ?? process.cwd();
 const src = join(root, "src");
