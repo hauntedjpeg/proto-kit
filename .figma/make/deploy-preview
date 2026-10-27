@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Builds the cached static preview Figma shows on the canvas. Must leave a static site in dist/.
+# NOTE: if Figma generated its own version of this file on first clone, prefer Figma's — it knows
+# where to publish from. Keep the verification line.
+set -euo pipefail
+pnpm run build
+test -f dist/index.html || { echo "deploy-preview: dist/index.html missing" >&2; exit 1; }

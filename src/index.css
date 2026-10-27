@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* Design tokens live here so they port 1:1 to the Next.js app (globals.css). */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-neutral-900 antialiased;
+}

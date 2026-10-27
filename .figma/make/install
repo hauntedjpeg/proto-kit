@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Figma runs this before dev/deploy-preview. Lockfile-pinned install.
+set -euo pipefail
+pnpm install --frozen-lockfile

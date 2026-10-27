@@ -1,0 +1,4 @@
+# Figma installs these before running .figma/make/install. Keep in sync with your machine.
+[tools]
+node = "22"
+pnpm = "10"
