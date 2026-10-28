@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "./ui/index.css";
 
 /* Design tokens live here so they port 1:1 to the Next.js app (app/globals.css). */
 @theme {

@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "es2023",
@@ -8,10 +9,8 @@
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
 
-    /* Import alias: "@/x" -> "src/x". Vite reads this too (resolve.tsconfigPaths). */
-    "paths": {
-      "@/*": ["./src/*"]
-    },
+    /* Import alias "@/*" is inherited from tsconfig.json (see note there).
+       Vite reads it too via resolve.tsconfigPaths. */
 
     /* Bundler mode */
     "moduleResolution": "bundler",

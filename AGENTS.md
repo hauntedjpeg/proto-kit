@@ -29,8 +29,11 @@ Claude, Figma's agent, or anything else.
 ## Imports
 
 Use the `@/` alias for anything under `src/` (`import { Button } from "@/components/ui/button"`).
-It is defined in `tsconfig.app.json` (`paths`, no `baseUrl` — TypeScript 7 removed it) and
-resolved by `resolve.tsconfigPaths` in `vite.config.ts`. Relative imports are fine within a folder.
+It is defined once, in the root `tsconfig.json` (`compilerOptions.paths`, no `baseUrl` — TypeScript 7
+removed it); `tsconfig.app.json` extends that file and Vite resolves it via `resolve.tsconfigPaths`.
+Keep it in the root file: the Stera UI CLI reads `tsconfig.json` directly and follows `extends` but
+not project `references`, so an alias that only lives in `tsconfig.app.json` is invisible to it.
+Relative imports are fine within a folder.
 
 ## Embedded-context rules
 

@@ -1,4 +1,14 @@
 {
+  /* Solution file: `tsc -b` builds the referenced projects below.
+     The "@/*" alias lives HERE (not only in tsconfig.app.json) because tooling that
+     reads tsconfig.json directly — e.g. `pnpm dlx stera-ui@latest init/add`, which uses
+     tsconfig-paths — follows `extends` but not `references`. tsconfig.app.json extends
+     this file, so the alias is defined once. */
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
