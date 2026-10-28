@@ -20,11 +20,11 @@ Claude, Figma's agent, or anything else.
 | Folder | Contains | Rules |
 |---|---|---|
 | `src/components/` | pure presentational components | props in, JSX out; no fetching, no routing, no `src/mock` imports except types |
-| `src/screens/` | one component per route/screen | owns local state; may call `src/mock/api`; receives navigation via `onNavigate` prop |
+| `src/views/` | one component per route/view | owns local state; may call `src/mock/api`; receives navigation via `onNavigate` prop |
 | `src/mock/` | typed fixtures + fake async API | deterministic, synchronous data; `setTimeout` for latency; **no `Date.now()`/`Math.random()` at module scope** |
 | `src/lib/` | framework-free utilities | `storage.ts` wrapper is mandatory for web storage |
 | `src/styles/` | `globals.css` (Tailwind entry + `@theme` tokens) and Stera's `ui/` partials | ports to `app/globals.css` unchanged |
-| `src/App.tsx` | the switch between screens | thin; this file is deleted in the Next.js conversion |
+| `src/App.tsx` | the switch between views | thin; this file is deleted in the Next.js conversion |
 
 ## Imports
 
@@ -66,3 +66,9 @@ pnpm dlx stera-ui@latest add button    # copies src/components/ui/button.tsx (+ 
 
 Installed files are yours to edit. Keep `src/components/ui/` for registry components and
 `src/components/` for the prototype's own presentational components.
+
+## Converting to Next.js
+
+When the prototype is approved, follow `.claude/skills/nextjs-migration/SKILL.md` (Claude Code
+loads it automatically; other agents should read it directly). Start with
+`node scripts/nextjs-migration-report.mjs .`.

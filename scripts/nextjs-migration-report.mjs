@@ -27,7 +27,7 @@ const clientHooks = [], storageUses = [], envUses = [], browserGlobals = [], moc
 
 for (const f of walk(src)) {
   const r = rel(f), s = readFileSync(f, "utf8");
-  if (r.includes("/screens/")) screens.push(r);
+  if (/\/(views|screens)\//.test(r)) screens.push(r);
   else if (r.includes("/components/")) components.push(r);
   else if (r.includes("/mock/")) mocks.push(r);
   else if (r.includes("/lib/")) libs.push(r);
@@ -64,7 +64,7 @@ const sec = (t, items, fmt = (x) => x) => {
 
 console.log(`Next.js migration report — ${root}`);
 sec("1. Routes to create (app/<route>/page.tsx) — from src/App.tsx switch:", routes.length ? routes : ["(no switch found; one route: /)"]);
-sec("2. Screens → 'use client' bodies under app/<route>/ (receive initial data via props):", screens);
+sec("2. Views → 'use client' bodies under app/<route>/ (receive initial data via props):", screens);
 sec("3. Components → copy unchanged to components/ (verify no framework imports):", components);
 sec("4. Mock API functions → each becomes a server fetch / Server Action / route handler:", apiFns);
 sec("5. Mock fixtures → delete after real data is wired; keep the exported types:", mocks);
@@ -75,4 +75,4 @@ sec("9. Mock imports to replace (each line is one edit):", mockImports);
 sec("10. Boundary violations to fix BEFORE migrating:", boundaryViolations);
 sec("11. Dependencies: drop", viteOnly);
 sec("    Dependencies: keep", keep);
-console.log(`\nAlso: move src/index.css @theme → app/globals.css; replace <img> with next/image where it matters;\nreplace onNavigate props with next/link or useRouter; delete src/App.tsx, src/main.tsx, index.html, vite.config.ts, .figma/.\n`);
+console.log(`\nAlso: move src/styles/globals.css (@theme) and src/styles/ui/ → src/app/; replace <img> with next/image where it matters;\nreplace onNavigate props with next/link or useRouter; delete src/App.tsx, src/main.tsx, index.html, vite.config.ts, .figma/.\n`);
