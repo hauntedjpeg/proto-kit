@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ArrowLeftIcon } from "stera-icons";
-import type { Route } from "../App";
-import { Button } from "../components/Button";
-import { storage } from "../lib/storage";
+import type { Route } from "@/App";
+import { Button } from "@/components/Button";
+import { storage } from "@/lib/storage";
 
 export function SettingsScreen({ onNavigate }: { onNavigate: (r: Route) => void }) {
   const [compact, setCompact] = useState(() => storage.get("compact") === "1");

@@ -1,5 +1,5 @@
 import { MailIcon, MailOpenIcon } from "stera-icons";
-import type { Message } from "../mock/messages";
+import type { Message } from "@/mock/messages";
 
 type Props = { message: Message; onOpen: (id: string) => void };
 

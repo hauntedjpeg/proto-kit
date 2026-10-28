@@ -1,6 +1,6 @@
 // Fake async API. Promises + setTimeout stand in for route handlers / server
 // fetches. In production, each function maps to a real fetch or a Server Action.
-import { messages, type Message } from "./messages";
+import { messages, type Message } from "@/mock/messages";
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 

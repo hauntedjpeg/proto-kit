@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Design tokens live here so they port 1:1 to the Next.js app (globals.css). */
+/* Design tokens live here so they port 1:1 to the Next.js app (app/globals.css). */
 @theme {
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }

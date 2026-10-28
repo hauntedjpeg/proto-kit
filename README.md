@@ -18,9 +18,11 @@ Read `AGENTS.md` — it's the rulebook for any agent (including Figma's) editing
 ```
 src/
   components/   pure UI, props in → JSX out (ports to Next.js unchanged)
+    ui/         Stera UI components (pnpm dlx stera-ui@latest add <name>)
   screens/      one per route; local state; calls src/mock/api
   mock/         typed fixtures + fake async API (deterministic)
-  lib/          storage wrapper, utils
+  lib/          storage wrapper, utils (cn)
+  styles/       globals.css — Tailwind entry + @theme tokens; ui/ partials from Stera
   App.tsx       route switch (replaced by app/ routes in Next.js)
 .figma/make/    install / dev / deploy-preview — what Figma runs
 scripts/        figma-preflight.mjs, nextjs-migration-report.mjs

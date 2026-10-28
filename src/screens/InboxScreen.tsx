@@ -3,11 +3,11 @@
 // 'use client' body that receives initial data via props.
 import { useEffect, useState } from "react";
 import { SettingsIcon } from "stera-icons";
-import type { Route } from "../App";
-import { Button } from "../components/Button";
-import { MessageRow } from "../components/MessageRow";
-import { listMessages, markRead } from "../mock/api";
-import { messages as seed, type Message } from "../mock/messages";
+import type { Route } from "@/App";
+import { Button } from "@/components/Button";
+import { MessageRow } from "@/components/MessageRow";
+import { listMessages, markRead } from "@/mock/api";
+import { messages as seed, type Message } from "@/mock/messages";
 
 export function InboxScreen({ onNavigate }: { onNavigate: (r: Route) => void }) {
   // Seed synchronously so the static preview is never blank; refresh async after.

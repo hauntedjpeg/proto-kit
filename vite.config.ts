@@ -5,9 +5,11 @@ import { defineConfig } from "vite";
 // Figma code-layer-safe config.
 // - base "./" → relative asset URLs, so dist/ works wherever Figma serves it from.
 // - server.host/port read $PORT, which Figma's .figma/make/dev sets.
+// - resolve.tsconfigPaths → the "@/*" alias comes from tsconfig.app.json (Vite 8+).
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: "./",
+  resolve: { tsconfigPaths: true },
   server: {
     host: true,
     port: Number(process.env.PORT) || 5173,

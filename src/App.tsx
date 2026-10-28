@@ -2,8 +2,8 @@
 // hands it data. In the Next.js conversion this file disappears — each case
 // becomes an app/<route>/page.tsx.
 import { useState } from "react";
-import { InboxScreen } from "./screens/InboxScreen";
-import { SettingsScreen } from "./screens/SettingsScreen";
+import { InboxScreen } from "@/screens/InboxScreen";
+import { SettingsScreen } from "@/screens/SettingsScreen";
 
 export type Route = "inbox" | "settings";
 

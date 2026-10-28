@@ -23,7 +23,14 @@ Claude, Figma's agent, or anything else.
 | `src/screens/` | one component per route/screen | owns local state; may call `src/mock/api`; receives navigation via `onNavigate` prop |
 | `src/mock/` | typed fixtures + fake async API | deterministic, synchronous data; `setTimeout` for latency; **no `Date.now()`/`Math.random()` at module scope** |
 | `src/lib/` | framework-free utilities | `storage.ts` wrapper is mandatory for web storage |
+| `src/styles/` | `globals.css` (Tailwind entry + `@theme` tokens) and Stera's `ui/` partials | ports to `app/globals.css` unchanged |
 | `src/App.tsx` | the switch between screens | thin; this file is deleted in the Next.js conversion |
+
+## Imports
+
+Use the `@/` alias for anything under `src/` (`import { Button } from "@/components/ui/button"`).
+It is defined in `tsconfig.app.json` (`paths`, no `baseUrl` — TypeScript 7 removed it) and
+resolved by `resolve.tsconfigPaths` in `vite.config.ts`. Relative imports are fine within a folder.
 
 ## Embedded-context rules
 
@@ -42,5 +49,17 @@ Size with Tailwind (`className="size-5"`).
 
 ## Design tokens
 
-Tailwind v4 `@theme` block in `src/index.css`. Add tokens there, not as arbitrary values in
-components, so they port to `globals.css` later.
+Tailwind v4 `@theme` block in `src/styles/globals.css`. Add tokens there, not as arbitrary values
+in components, so they port to `app/globals.css` later.
+
+## Stera UI components
+
+Components come from the Stera UI registry, not from scratch:
+
+```
+pnpm dlx stera-ui@latest init          # once per prototype; writes stera.config.json + src/styles/ui/
+pnpm dlx stera-ui@latest add button    # copies src/components/ui/button.tsx (+ src/lib/utils.ts)
+```
+
+Installed files are yours to edit. Keep `src/components/ui/` for registry components and
+`src/components/` for the prototype's own presentational components.
