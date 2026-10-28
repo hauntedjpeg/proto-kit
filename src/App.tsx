@@ -2,17 +2,17 @@
 // hands it data. In the Next.js conversion this file disappears — each case
 // becomes an app/<route>/page.tsx.
 import { useState } from "react";
-import { InboxScreen } from "@/views/InboxScreen";
-import { SettingsScreen } from "@/views/SettingsScreen";
+import { AboutScreen } from "@/views/AboutScreen";
+import { HomeScreen } from "@/views/HomeScreen";
 
-export type Route = "inbox" | "settings";
+export type Route = "home" | "about";
 
 export default function App() {
-  const [route, setRoute] = useState<Route>("inbox");
+  const [route, setRoute] = useState<Route>("home");
   switch (route) {
-    case "settings":
-      return <SettingsScreen onNavigate={setRoute} />;
+    case "about":
+      return <AboutScreen onNavigate={setRoute} />;
     default:
-      return <InboxScreen onNavigate={setRoute} />;
+      return <HomeScreen onNavigate={setRoute} />;
   }
 }
